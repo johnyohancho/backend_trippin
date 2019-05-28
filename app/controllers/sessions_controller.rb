@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
             token = JWT.encode({ user_id: @user.id }, ENV['SECRET'], 'HS256')
             render json: { token: token }, status: :ok
         else
-            render json: { errors: "Incorrect email or password" },
+            render json: { errors: ["Incorrect email or password"] },
                     status: :unauthorized
         end
     end
