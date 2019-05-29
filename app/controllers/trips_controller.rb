@@ -24,6 +24,12 @@ class TripsController < ApplicationController
         @trip = Trip.find(params[:id])
     end
 
+    def destroy
+        @trip = Trip.find(params[:id])
+        @trip.destroy
+        render json: { errors: @trip.errors.full_messages }, status: :unprocessable_entity
+      end
+
     
     private
 
